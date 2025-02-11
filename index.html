@@ -67,7 +67,7 @@
             <span class="author-block">
               <a href="https://gemcollector.github.io/">Zhecheng Yuan</a><sup>1,2,3</sup>,</span>
             <span class="author-block">
-              <a href="http://hxu.rocks/">Huazhe Xu</a><sup>1,2,3</sup>,</span>
+              <a href="http://hxu.rocks/">Huazhe Xu</a><sup>1,2,3</sup></span>
           </div>
 
           <!-- Affiliations. -->
@@ -200,6 +200,13 @@
               <img src="./static/images/finger_explosion.png" alt="Finger Assembly"/>
             </div>
           </div>
+          <div class="content has-text-left">
+            <p>
+              DOGlove leverages a <strong>cable-driven mechanism</strong> to deliver <u>force feedback</u> to each finger while maintaining a compact and cost-effective design. 
+              Additionally, each fingertip is also equipped with a <strong>linear resonant actuator (LRA)</strong> to provide realistic <u>haptic feedback</u>. 
+              This integration of force and haptic feedback creates an immersive and responsive interface for dexterous manipulation.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -212,13 +219,19 @@
           <h2 class="title is-3">Action Retargeting</h2>
           <div class="content has-text-left">
             <p>
-              We deploy the system on the LEAP hand in real-world scenarios and test it with various robotic hands in the MuJoCo simulator. 
+              We apply the 5-DoF haptic force feedback to the human operators’ fingertips and adopt a retargeting method focused on <strong>fingertip positions</strong>.
+              Our approach combines Forward Kinematics (FK) to compute human fingertip positions and Inverse Kinematics (IK) to calculate the corresponding robotic hand positions.
             </p>
           </div>
           <div class="content has-text-centered">
             <div class="column">
               <img src="./static/images/retargeting.png" alt="Action Retargeting"/>
             </div>
+          </div>
+          <div class="content has-text-left">
+            <p>
+              We deploy the system on the LEAP hand in real-world scenarios and test it with various robotic hands in the MuJoCo simulator. 
+            </p>
           </div>
         </div>
       </div>
@@ -267,7 +280,7 @@
             </br>
             <div class="content has-text-center">
               <p>
-                Pick-and-place a teddy bear.
+                Pick and place a teddy bear.
               </p>
             </div>
           </div>
