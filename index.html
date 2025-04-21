@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description
+        content="DOGlove: Dexterous Manipulation with a Low-Cost Open-Source Haptic Force Feedback Glove">
+  <meta name="keywords" content="Haptic Feedback, Force Feedback, Dexterous Manipulation, Teleoperation, Glove, Open-Source">
+  <!-- title short -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DOGlove</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WN3LHKW2SF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WN3LHKW2SF');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <!-- Favicon. -->
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    /* Remove default margin and padding for all sections */
+    .section {
+            margin: 0;
+            padding: 1.2rem;
+    }
+  </style>
+</head>
+
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <!-- Title. -->
+          <h2 class="title is-2 publication-title">DOGlove: Dexterous Manipulation with a Low-Cost Open-Source Haptic Force Feedback Glove</h2>
+          
+          <!-- Authors. -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://doublehan07.github.io/">Han Zhang</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://hsb0508.github.io/">Songbo Hu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://gemcollector.github.io/">Zhecheng Yuan</a><sup>1,2,3</sup>,</span>
+            <span class="author-block">
+              <a href="http://hxu.rocks/">Huazhe Xu</a><sup>1,2,3</sup></span>
+          </div>
+
+          <!-- Affiliations. -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> Tsinghua University, <sup>2</sup> Shanghai Qi Zhi Institute, <sup>3</sup> Shanghai AI Lab</span>
+          </div>
+
+          <!-- Icons. -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2502.07730"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2502.07730"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/2qO7dbH9zxc"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Hardware Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-microchip"></i>
+                  </span>
+                  <span>Hardware (Coming Soon)</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser Video. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        DOGlove, a haptic force feedback glove for precise teleoperation and dexterous manipulation.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- Hardware. -->
+<section class="section" id="Hardware">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Hardware Design</h3>
+        <div class="content has-text-left">
+          <p>
+            To ensure precise MoCap capabilities and a comfortable wearing experience, DOGlove is designed
+            to closely resemble the anthropomorphic structure of the human hand. It features <strong>21-DoF motion capture</strong> 
+            and <strong>5-DoF haptic force feedback</strong>.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <div class="column">
+            <img src="./static/images/glove_explosion.png" alt="Kinematic Structure"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- "Click to learn more" Button -->
+<div class="has-text-centered">
+  <button class="button" style="background-color: #87CEFA; color: #fff; border: none; font-size: 1.2rem; padding: 12px 24px;" onclick="toggleHardwareSection()">
+    Curious about the hardware? Click to learn more!
+  </button>
+</div>
+<!-- Hidden Hardware Section -->
+<div id="hardwareSection" style="display: none;">
+  <section class="section" id="Hardware">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Finger Assembly</h2>
+          <div class="content has-text-left">
+            <p>
+              DOGlove is composed of the five finger assemblies, along with the palm base structure. The design of each finger 
+              assembly follows a <strong>modular approach</strong>, ensuring consistent structural elements across all fingers. The exploded view of a single 
+              finger is illustrated in the figure below. The highlighted area indicates the basic components of a rotary joint.
+            </p>
+          </div>
+          <div class="content has-text-centered">
+            <div class="column">
+              <img src="./static/images/finger_explosion.png" alt="Finger Assembly"/>
+            </div>
+          </div>
+          <div class="content has-text-left">
+            <p>
+              DOGlove leverages a <strong>cable-driven mechanism</strong> to deliver <u>force feedback</u> to each finger while maintaining a compact and cost-effective design. 
+              Additionally, each fingertip is also equipped with a <strong>linear resonant actuator (LRA)</strong> to provide realistic <u>haptic feedback</u>. 
+              This integration of force and haptic feedback creates an immersive and responsive interface for dexterous manipulation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="Retargeting">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Action Retargeting</h2>
+          <div class="content has-text-left">
+            <p>
+              We apply the 5-DoF haptic force feedback to the human operators’ fingertips and adopt a retargeting method focused on <strong>fingertip positions</strong>.
+              Our approach combines Forward Kinematics (FK) to compute human fingertip positions and Inverse Kinematics (IK) to calculate the corresponding robotic hand positions.
+            </p>
+          </div>
+          <div class="content has-text-centered">
+            <div class="column">
+              <img src="./static/images/retargeting.png" alt="Action Retargeting"/>
+            </div>
+          </div>
+          <div class="content has-text-left">
+            <p>
+              We deploy the system on the LEAP hand in real-world scenarios and test it with various robotic hands in the MuJoCo simulator. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- JavaScript for Toggling Section -->
+<script>
+  function toggleHardwareSection() {
+    var section = document.getElementById("hardwareSection");
+    if (section.style.display === "none") {
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
+    }
+  }
+</script>
+
+
+<!-- Teleoperation demo. -->
+<section class="section" id="Teleoperation">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+        <h2 class="title is-3">Teleoperation Demo</h2>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="publication-video">
+              <video id="small_box" controls playsinline height="100%">
+                <source src="./static/videos/small_box.mp4" type="video/mp4">
+              </video>
+            </div>
+            </br>
+            <div class="content has-text-center">
+              <p>
+                Rotate and place a milk carton.
+              </p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="publication-video">
+              <video id="pick_bear" controls playsinline height="100%">
+                <source src="./static/videos/pick_bear.mp4" type="video/mp4">
+              </video>
+            </div>
+            </br>
+            <div class="content has-text-center">
+              <p>
+                Pick and place a teddy bear.
+              </p>
+            </div>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Quantitative Experiment. -->
+<section class="section" id="Experiment">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+        <h3 class="title is-3">How Does Haptic Force Feedback Enhance Teleoperation?</h3>
+        <h5 class="title is-5">We conduct a series of quantitative experiments and a user study.</h5>
+        
+        <!-- Bottle Slip -->
+        <!-- Video + Caption Wrapper -->
+        <div class="publication-video-container">
+          <video id="bottle_slip" autoplay muted loop playsinline>
+            <source src="./static/videos/bottle_slip.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption" style="text-align: left">
+            In the above experiment, the human operator must perform a bottle-slipping action <strong>using only feedback from DOGlove</strong>. 
+            A trial is denoted successful if the bottle slips without falling. 
+            <strong>Without visual cues</strong>, <u>force feedback</u> significantly improves the success rate. 
+            Adding <u>haptic feedback</u> further enhances overall performance.<br>
+            To further evaluate control accuracy, <strong>when visual input is allowed</strong>, the operator must slip the bottle to a <strong>precise target distance of 9 cm</strong>. 
+            We then measure the deviation between the actual slipping distance and this target. 
+            When visual input is available, <u>force feedback</u> helps operators reduce slipping deviation more effectively.
+          </p>
+        </div>
+        <br>
+
+        <!-- Milk Carton -->
+        <!-- Video + Caption Wrapper -->
+        <div class="publication-video-container">
+          <video id="large_box" autoplay muted loop playsinline>
+            <source src="./static/videos/large_box.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption" style="text-align: left">
+            <u>Haptic force feedback</u> enables operators to achieve a <strong>higher success rate</strong> and a <strong>faster average completion time</strong>, 
+            as haptic feedback provides contact information, 
+            while force feedback indicates the proper timing for in-hand rotation.
+          </p>
+        </div>
+        <br>
+
+        <!-- User Study Results Button -->
+        <div class="has-text-centered">
+          <button class="button" style="background-color: #87CEFA; color: #fff; border: none; font-size: 1.2rem; padding: 12px 24px; margin-bottom: 20px;" 
+            onclick="toggleUserStudySection()">
+            Show me the user study results!
+          </button>
+        </div>
+        <!-- JavaScript for Toggling User Study Section -->
+        <script>
+          function toggleUserStudySection() {
+            var section = document.getElementById("userStudySection");
+            if (section.style.display === "none") {
+              section.style.display = "block";
+            } else {
+              section.style.display = "none";
+            }
+          }
+        </script>
+        
+        <!-- Hidden User Study Section -->
+        <div id="userStudySection" style="display: none;">
+          <h4 class="title is-4">User Study</h4>
+          <!-- Video + Caption Wrapper -->
+          <div class="publication-video-container">
+            <video id="bottle_slip" autoplay muted loop playsinline>
+              <source src="./static/videos/user_study.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption" style="text-align: left">
+              Five <strong>untrained</strong> human operators participate in this user study. 
+              They must <strong>distinguish between five pairs of objects</strong> using only haptic force feedback from DOGlove, 
+              <strong>without any visual or auditory input</strong>. 
+            </p>
+          </div>
+          <br>
+
+          <!-- Two-Column Image Layout with Centered Captions -->
+          <div class="columns is-centered">
+            <!-- Left Column (Align Left Image, Center Caption) -->
+            <div class="column is-half is-flex" style="justify-content: flex-start; flex-direction: column; align-items: center;">
+              <img src="./static/images/pair_1.png" alt="Image 1 description" style="max-width: 95%;">
+              <p class="image-caption" style="text-align: center; margin-top: 5px;">
+                <strong>Basic Pair</strong>: Different shape.<br>
+                The ball and the box have distinctly different shapes.
+              </p>
+            </div>
+
+            <!-- Right Column (Align Right Image, Center Caption) -->
+            <div class="column is-half is-flex" style="justify-content: flex-end; flex-direction: column; align-items: center;">
+              <img src="./static/images/pair_3.png" alt="Image 2 description" style="max-width: 95%;">
+              <p class="image-caption" style="text-align: center; margin-top: 5px;">
+                <strong>Basic Pair</strong>: Similar softness and shape, different size.<br>
+                The two toys have similar softness and shapes but vary in size.
+              </p>
+            </div>
+          </div>
+
+          <!-- One-Column Image Layout -->
+          <div class="columns is-centered">
+            <div class="column is-half is-flex" style="flex-direction: column; align-items: center;">
+              <img src="./static/images/pair_2.png" alt="Image description" style="max-width: 100%;">
+              <p class="image-caption" style="text-align: center; margin-top: 5px;">
+                <strong>Basic Pair</strong>: Similar shape, different size.<br>
+                The peanut bottle and the coffee paper cup share a similar cylindrical shape, but their diameters differ slightly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Two-Column Image Layout with Centered Captions -->
+          <div class="columns is-centered">
+            <!-- Left Column (Align Left Image, Center Caption) -->
+            <div class="column is-half is-flex" style="justify-content: flex-start; flex-direction: column; align-items: center;">
+              <img src="./static/images/pair_4.png" alt="Image 1 description" style="max-width: 95%;">
+              <p class="image-caption" style="text-align: center; margin-top: 5px;">
+                <strong>Challenging Pair</strong>: Similar size and shape, different softness.<br>
+                Two identical bottles, one filled with pure water (soft) and the other filled with shaken carbonated cola (hard).
+              </p>
+            </div>
+
+            <!-- Right Column (Align Right Image, Center Caption) -->
+            <div class="column is-half is-flex" style="justify-content: flex-end; flex-direction: column; align-items: center;">
+              <img src="./static/images/pair_5.png" alt="Image 2 description" style="max-width: 95%;">
+              <p class="image-caption" style="text-align: center; margin-top: 5px;">
+                <strong>Challenging Pair</strong>: Similar shape, different size and softness.<br>
+                A toy cabbage (softer, larger) and a real cabbage (harder, smaller, and more compact).
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- IL Experiment. -->
+<section class="section" id="Experiment">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+        <h3 class="title is-3">Imitation Learning with DOGlove</h3>
+        <h5 class="title is-5">DOGlove enables the collection of high-quality demonstrations.</h5>
+
+        <div class="content has-text-left">
+          <p>
+            <strong>3D Diffusion Policy (DP3)</strong> is selected as our imitation learning algorithm, 
+            and we use Realsense L515 to acquire the point cloud inputs, 
+            which are then downsampled to 1024 points using farthest point sampling. 
+            The data collected by DOGlove is used to train policies for various downstream tasks.
+            We evaluate imitation learning performance on 2 contact-rich tasks.
+          </p>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="publication-video ">
+              <video id="move_box_auto" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/move_box_auto.mp4" type="video/mp4">
+              </video>
+            </div>
+            <br>
+            <div class="content has-text-left">
+              <p>
+                <strong>Press and Move Box</strong>: During data collection, the box is randomly placed within a <u>30×20 cm area</u>, 
+                and DOGlove collects <u>40 demonstrations</u> to train the policy.<br>
+                In evaluation, the box is also randomly placed in the same area. 
+                Across 20 trials, the success rate is 85% (17/20).
+              </p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="publication-video ">
+              <video id="pick_bear_auto" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/pick_bear_auto.mp4" type="video/mp4">
+              </video>
+            </div>
+            <br>
+            <div class="content has-text-left">
+              <p>
+                <strong>Pick and Place Teddy Bear</strong>: During data collection, the teddy bear’s initial position is randomized within a  <u>30×20 cm area</u>, 
+                and DOGlove collects <u>40 demonstrations</u> to train the policy.<br>
+                In evaluation, the bear is again randomly placed in the same area. 
+                Across 20 trials, the success rate is 70% (14/20).
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTex. -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{zhang2025doglove,
+  title={DOGlove: Dexterous Manipulation with a Low-Cost Open-Source Haptic Force Feedback Glove},
+  author={Zhang, Han and Hu, Songbo and Yuan, Zhecheng and Xu, Huazhe},
+  journal={arXiv preprint arXiv:2502.07730},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<!-- Contact. -->
+<section class="section" id="Contact">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Contact</h2>
+    <p style="text-align: justify; font-size: 1.0rem; line-height: 1.5; margin-bottom: 1rem;">
+      If you have any questions, please feel free to contact <a href="https://doublehan07.github.io/">Han Zhang</a>.
+    </p>
+  </div>
+</section>
+
+
+<!-- Acknowledgements. -->
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p style="text-align: justify; font-size: 1.0rem; line-height: 1.5; margin-bottom: 1rem;">
+      We would like to thank Zhengrong Xue, Gu Zhang, Changyi Lin, Mengda Xu, and Yifan Hou for their invaluable advice and fruitful discussions on hardware design and learning policies. We also appreciate Wenhao Ding and Laixi Shi for their insightful discussions and feedback. Additionally, we thank Yichuan Gao, Xiaoyan Yang, Xinyao Qin, and Botian Xu for their assistance with the user study. Special thanks to Skyentific, Gennady Plyushchev, for their innovative contributions to the unconventional cable-driven joint design. We are also grateful to Tiansheng Sun and Guanghan Pan for their open-source repository of the HTC Vive Tracker Python API. Lastly, we extend our appreciation to Yitong Wang for her help in creating elegant graphic renderings of the hardware design.
+    </p>
+  </div>
+</section>
+
+
+<!-- Footer. -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
